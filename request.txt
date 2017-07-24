@@ -1,0 +1,4 @@
+pytz
+markdown
+django==1.10.6
+Pyments
