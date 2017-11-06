@@ -13,9 +13,11 @@ def archives():
     return Post.objects.dates('created_time', 'month', order='DESC')
 
 @register.simple_tag
-def categories():
-    # 别忘了在顶部引入 Category 类
-    return Category.objects.all()
-@register.simple_tag
 def tags():
     return Tag.objects.all()
+    
+@register.simple_tag
+def categories():
+    return Category.objects.all()
+    
+

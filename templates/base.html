@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="{% static 'blog/css/pace.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/custom.css' %}">
-    <link rel="stylesheet" href="{% static 'blog/css/highlights/github.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/highlights/tango.css' %}">
 
     <!-- js -->
     <script src="{% static 'blog/js/jquery-2.1.3.min.js' %}"></script>
@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col-md-4 col-sm-5 col-xs-8">
                 <div class="logo">
-                    <h1><a href="{% url 'blog:index' %}"><b>夜雨</b> &amp; 菌</a></h1>
+                    <h1><a href="{% url 'blog:index' %}"><b>夜雨 &amp; 菌</b></a></h1>
                 </div>
             </div><!-- col-md-4 -->
             <div class="col-md-8 col-sm-7 col-xs-4">
@@ -42,16 +42,16 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
                             <li class="cl-effect-11"><a href="{% url 'blog:index' %}" data-hover="首页">首页</a></li>
-                            <li class="cl-effect-11"><a href="/post/3/" data-hover="关于">关于</a></li>
-                            <li class="cl-effect-11"><a href="/post/6/" data-hover="联系">联系</a></li>
+                            <li class="cl-effect-11"><a href="/about" data-hover="关于">关于</a></li>
+                            <li class="cl-effect-11"><a href="mailto:ghosx@qq.com" data-hover="联系">联系</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </nav>
                 <div id="header-search-box">
                     <a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>
                     <div id="search-form" class="search-form">
-                        <form role="search" method="get" id="searchform" action="#">
-                            <input type="search" placeholder="搜索" required>
+                        <form role="search" method="get" id="searchform" action="{% url 'blog:search' %}">
+                            <input type="search" placeholder="搜索" name="q" required>
                             <button type="submit"><span class="ion-ios-search-strong"></span></button>
                         </form>
                     </div>
@@ -66,9 +66,11 @@
         <div class="row">
             <main class="col-md-8">
 {% block main %}
-{% empty}
+
 {% endblock main %}
             </main>
+
+            {% block side %}
             <aside class="col-md-4">
 
               <!-- ↓最新文章↓ -->
@@ -123,8 +125,9 @@
                           {% endfor %}
                         </ul>
               </div>
-
             </aside>
+            {% endblock side %}
+
         </div>
     </div>
 </div>
@@ -133,25 +136,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <p class="copyright">&copy 2017  魔改自<a href="#" title="网页模板" >追梦人物的博客</a>
+                <p class="copyright">©西安理工大学参赛作品
                 </p>
             </div>
         </div>
     </div>
 </footer>
-
-<!-- Mobile Menu -->
-<div class="overlay overlay-hugeinc">
-    <button type="button" class="overlay-close"><span class="ion-ios-close-empty"></span></button>
-    <nav>
-        <ul>
-            <li><a href="index.html">首页</a></li>
-            <li><a href="full-width.html">博客</a></li>
-            <li><a href="about.html">关于</a></li>
-            <li><a href="contact.html">联系</a></li>
-        </ul>
-    </nav>
-</div>
 
 <script src="{% static 'blog/js/script.js' %}"></script>
 
